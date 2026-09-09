@@ -79,11 +79,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Workly AI — Internal Workplace AI Assistant" },
+      {
+        name: "description",
+        content:
+          "Workly AI helps teams draft emails, summarize meetings, plan tasks and research topics with AI.",
+      },
+      { name: "author", content: "Workly AI" },
+      { property: "og:title", content: "Workly AI — Internal Workplace AI Assistant" },
+      {
+        property: "og:description",
+        content:
+          "Workly AI helps teams draft emails, summarize meetings, plan tasks and research topics with AI.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
@@ -104,7 +112,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <HeadContent />
       </head>
@@ -121,8 +129,17 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <div className="pt-16">
+          <p className="border-b border-border-strong bg-secondary/40 px-4 py-2 text-center text-xs text-muted-foreground">
+            AI-generated content may require human review
+          </p>
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </div>
+      </div>
+      <Toaster />
     </QueryClientProvider>
   );
 }
