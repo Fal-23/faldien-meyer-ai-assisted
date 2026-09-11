@@ -114,7 +114,7 @@ function PlannerPage() {
                       <span
                         className={cn(
                           "rounded-md px-2 py-0.5 text-xs font-medium",
-                          priorityClass[item.priority] ?? priorityClass.Medium,
+                          priorityClass[item.priority] ?? priorityClass["Medium"],
                         )}
                       >
                         {item.priority}
